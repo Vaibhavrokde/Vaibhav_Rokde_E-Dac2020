@@ -1,0 +1,103 @@
+Create table EMP ( EMPNO numeric(4) not null, ENAME varchar(30) not null, JOB varchar(10), MGR numeric(4), HIREDATE date, SAL numeric(7,2), DEPTNO numeric(2) ); 
+Insert into EMP (EMPNO ,ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO ) values(1000,  'Manish' , 'SALESMAN', 1003,  '2020-02-18', 600,  30) ;
+Insert into EMP (EMPNO ,ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO ) values(1001,  'Manoj' , 'SALESMAN', 1003,  '2018-02-18', 600,  30) ;
+Insert into EMP (EMPNO ,ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO ) values(1002 , 'Ashish', 'SALESMAN',1003 , '2013-02-18',  750,  30 );
+Insert into EMP (EMPNO ,ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO ) values(1004,  'Rekha', 'ANALYST', 1006 , '2001-02-18', 3000,  10);
+Insert into EMP (EMPNO ,ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO ) values(1005 , 'Sachin', 'ANALYST', 1006 ,  '2019-02-18', 3000, 10 );
+Insert into EMP (EMPNO ,ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO ) values(1006,  'Pooja',  'MANAGER'  ,     null    , '2000-02-18' ,6000, 10 );
+
+select * from emp;
+drop table emp;
+
+Create table dept (dno numeric(4) not null, dname varchar(10) not null,area varchar(30));
+Insert into dept(dno,dname,area) values(10,'Store','Mumbai');
+Insert into dept(dno,dname,area) values(20,'Purchase','Mumbai');
+Insert into dept(dno,dname,area) values(30,'Store', 'Delhi');
+Insert into dept(dno,dname,area) values(40,'Marketing','Pune');
+Insert into dept(dno,dname,area) values(50,'Finance','Delhi');
+Insert into dept(dno,dname,area) values(60,'Accounts','Mumbai');
+
+select * from dept;
+/*--------------------------------------------------------------------------------*/
+delimiter $$
+create procedure Que01(in val1 int, in val2 int)
+Begin 
+select val1 + val2 ;
+select val1 * val2  ;
+select val1 - val2;
+select val1/val2;
+end;$$
+-- drop procedure Que01;
+call Que01(20,10);
+/*--------------------------------------------------------------------------------*/
+delimiter $$
+create procedure Que02(inout str varchar(200))
+begin
+set str=(select reverse(str));
+end;$$
+
+set @str='Database';
+call Que02(@str);
+select @str as reverse;
+/*--------------------------------------------------------------------------------*/
+delimiter $$
+create procedure Que03()
+begin
+select EMPNO,ENAME,SAL from emp order by SAL limit 5;
+end;$$
+
+ -- drop procedure Que03;
+call Que03;
+/*--------------------------------------------------------------------------------*/
+delimiter $$
+create procedure Que04()
+begin
+create table emp_test(emp_id int,ename varchar(20),ejoining_date date);
+end $$
+call Que04;
+/*--------------------------------------------------------------------------------*/
+delimiter $$
+create procedure Que05(in detno int,in detname varchar(200), in  detarea varchar(20))
+begin
+insert into dept(dno,dname,area) values(detno,detname,detarea);
+end; $$
+
+ -- drop procedure Que05
+call Que05(60,'education','pune');
+select * from dept;
+/*--------------------------------------------------------------------------------*/
+
+delimiter $$
+create procedure Que06( inout value int ,out squr int,out cube int)
+begin 
+declare val1 int ;
+set val1=value;
+select val1,power(val1,2),power(val1,3) into value,squr,cube;
+end;$$
+
+-- drop procedure Que06
+
+
+set @value=2;
+call Que06(@value,@sqr,@cube);
+select @value,@sqr,@cube;
+/*--------------------------------------------------------------------------------*/
+delimiter $$
+CREATE PROCEDURE Que07(OUT ANS INT)
+BEGIN
+DECLARE NUM int;
+SET NUM=2;
+SELECT NUM  INTO ANS ;
+END $$
+
+CALL Que07(@ANS);
+SELECT @ANS;
+/*--------------------------------------------------------------------------------*/
+delimiter $$
+CREATE PROCEDURE Que08(IN X INT,OUT STR VARCHAR(50))
+BEGIN
+SELECT concat(E.ENAME,' IS FROM ',D.DNAME) INTO STR  FROM EMP E INNER JOIN DEPT D ON D.DNO=E.DEPTNO WHERE E.DEPTNO=X AND E.EMPNO=1004;
+END $$
+
+CALL Que08(10,@STR);
+SELECT @STR;
