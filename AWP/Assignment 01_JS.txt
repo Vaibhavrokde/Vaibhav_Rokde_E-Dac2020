@@ -1,0 +1,111 @@
+// 1.WAP to illustrate implementation of functions in javascript.
+
+    /*function myfun(){
+        console.log("Hello World");
+    }
+
+    myfun();*/
+
+/*------------------------------------------------------------------------------------------------*/
+
+// 2.WAP to illustrate the declaration of object, assignment of value and display it.
+
+    /*var car={ name: "mercedese", model:"AMG_GLC_43", Color: "Red"};
+
+    console.log(car.name);
+    console.log(car.model);
+    console.log(car.Color);*/
+/*------------------------------------------------------------------------------------------------*/
+
+    // 3.WAP to illustrate declaration of array , assignment of value to an array and display it.
+
+    /*var arr=[10,20,30,"Arahan",true,undefined,null];
+     console.log(arr);*/
+
+ /*------------------------------------------------------------------------------------------------*/
+
+//  4.Write a javascript function named is_integer which checks if the passed argument is an integer.
+//   You can use any mathematical operator or functions defined in the Math object.
+
+   /* function is_num(num)
+    {
+        if(isNaN(num))
+        {
+            console.log(num+" is not a number");
+        }else{
+            console.log(num+" is a number");
+        }
+    }
+
+    is_num(30);*/
+/*------------------------------------------------------------------------------------------------*/
+
+// 5.Using the forEach function defined for an array,
+//  find the sum of the array of numbers. [function add_all(arr) {...}]
+
+    /*function add_all(arr) {
+        
+        var sum=0;
+        for(var i in arr){
+            sum=sum+arr[i];
+        }
+        return sum;
+    }
+
+    var arr=[2,3,5,8];
+
+    console.log(add_all(arr));*/
+/*------------------------------------------------------------------------------------------------*/
+
+/*6.Write a JavaScript program to convert temperatures to and from celsius, fahrenheit.
+ [ Use the formula : c/5 = (f-32)/9, where c = temperature in celsius and f = temperature in fahrenheit]*/
+
+    /*function cel(temp){
+
+        return((temp*1.8)+32);
+    }
+
+    console.log(cel(77));*/
+ /*------------------------------------------------------------------------------------------------*/
+
+ /*7.Write a factorial function that returns the factorial of a given number,
+  n. Make sure you return the calculated value and not just print it. [function factorial(n){...}]*/
+
+   /* function factorial(n){
+        var fact=1;
+
+        for(var i =1;i<=n;i++){
+
+            fact=fact*i;
+        }
+        return fact;
+
+    }
+
+    console.log(factorial(3));*/
+/*------------------------------------------------------------------------------------------------*/
+
+/*8.Write a javascript function that converts a given amount of money into coins of denominations 
+(1, 2, 5, 10 and 25). [function convert_to_coins(amount) {...}]. You may choose to print the coin 
+denominations used on the console. E.g. convert_to_coins(87) should print 25 25 25 10 2.*/
+
+    /*function convert_to_coins(amount) {
+
+        var arr=[25,10,5,2,1];
+        var str='';
+
+        for(var i=0;i<arr.length;i++)
+        {
+            if(amount>=arr[i]){
+                amount=amount-arr[i];
+                str=str+ arr[i]+' ';
+                i--;
+            }
+        }
+        return str;
+    }
+
+    ;   
+    console.log(convert_to_coins(87));*/
+
+/*------------------------------------------------------------------------------------------------*/
